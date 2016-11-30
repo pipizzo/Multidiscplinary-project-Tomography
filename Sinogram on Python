@@ -1,13 +1,13 @@
 import numpy as np
 
-projections = []
-c = 0
+projections = [] #liste qui va contenir l'ensemble des projections pour les differents angles
+c = 0 #coompteur de tour de la boucle
 
 while c < 2 :
-    projection = []
+    projection = [] #liste qui va contenir une projection pour un angle donne
     for i in range(10) :
-        a = input('Resultat Projection : ')
-        projection.append(a)
+        a = input('Resultat Projection : ') #recupere le chiffre entre dans la console
+        projection.append(a) 
 
     print(projection)
     projections.append(projection)
@@ -15,8 +15,8 @@ while c < 2 :
 
 print(projections)
 
-b = np.array(projections)
-np.mat(b)
+b = np.array(projections) 
+np.mat(b) #ligne 18 et 19 permettent aux listes de s'organiser en matrice
 
 print('')
 print(b)
