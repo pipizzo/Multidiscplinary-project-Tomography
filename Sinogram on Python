@@ -1,0 +1,22 @@
+import numpy as np
+
+projections = []
+c = 0
+
+while c < 2 :
+    projection = []
+    for i in range(10) :
+        a = input('Resultat Projection : ')
+        projection.append(a)
+
+    print(projection)
+    projections.append(projection)
+    c += 1
+
+print(projections)
+
+b = np.array(projections)
+np.mat(b)
+
+print('')
+print(b)
