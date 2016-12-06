@@ -1,16 +1,21 @@
 """ Programme permettant de récupérer une série de chiffre rentré dans la console Idle et des les organiser en une matrice de 10 colonnes et 2 lignes """
 
-
 import numpy as np
+import serial #interface avec arduino
+import random #utile pour la simulation
 
 projections = [] #liste qui va contenir l'ensemble des projections pour les differents angles
+
 c = 0 #compteur de tour de la boucle
 
 while c < 2 :
     projection = [] #liste qui va contenir une projection pour un angle donne
     for i in range(10) :
-        a = input('Resultat Projection : ') #recupere le chiffre entre dans la console
-        projection.append(a) 
+        arduinoData = serial.Serial('com4',9600) #data d'arduino du port4
+        myData = (arduinoData.readline().strip())
+        a = input(myData.decode('utf-8')) #recupere le chiffre entre dans la console
+        #a = input(random.uniform(0,100)) va random entre 0 et 100 en float
+        projection[c,i].append(a)        
 
     print(projection)
     projections.append(projection)
