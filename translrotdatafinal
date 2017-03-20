@@ -1,0 +1,77 @@
+/*     Simple Stepper Motor Control Exaple Code
+ *      
+ *  by Dejan Nedelkovski, www.HowToMechatronics.com
+ *  
+ */
+// defines pins numbers
+const int stepPin = 5; 
+const int dirPin = 6;
+const int stepPinr = 7; 
+const int dirPinr = 8;
+int reading = A2;
+int dela = 0;
+//int duree[449][0];
+ 
+void setup() {
+  // Sets the two pins as Outputs
+  pinMode(stepPin,OUTPUT); 
+  pinMode(dirPin,OUTPUT);
+  pinMode(stepPinr,OUTPUT); 
+  pinMode(dirPinr,OUTPUT);  
+  digitalWrite(stepPin,LOW); 
+  digitalWrite(dirPin,LOW);
+  digitalWrite(stepPinr,LOW); 
+  digitalWrite(dirPinr,LOW);
+  Serial.begin(9600);
+}
+void loop() {
+  // if(button.uniquePress()){
+  if (dela == 0){
+    delay(5000);
+    dela = 1;
+  }
+
+  digitalWrite(stepPinr,HIGH); 
+    delayMicroseconds(10000); 
+    digitalWrite(stepPinr,LOW);
+    delayMicroseconds(10000); 
+    reading = analogRead(A2);
+    Serial.println(reading);
+    
+    
+  digitalWrite(dirPin,LOW); // Enables the motor to move in a particular direction
+  // Makes 200 pulses for making one full cycle rotation
+  for(int x = 0; x < 450; x++) {
+    digitalWrite(stepPin,HIGH); 
+    delayMicroseconds(10000); 
+    digitalWrite(stepPin,LOW);
+    delayMicroseconds(10000); 
+    reading = analogRead(A2);
+    Serial.println(reading);
+    //duree[x][0] = reading;
+}
+
+    //Serial.println(duree);
+
+
+    digitalWrite(stepPinr,HIGH); 
+    delayMicroseconds(10000); 
+    digitalWrite(stepPinr,LOW);
+    delayMicroseconds(10000); 
+    reading = analogRead(A2);
+    Serial.println(reading);
+
+
+    digitalWrite(dirPin,HIGH); // Enables the motor to move in a particular direction
+  // Makes 200 pulses for making one full cycle rotation
+  for(int x = 0; x < 450; x++) {
+    digitalWrite(stepPin,HIGH); 
+    delayMicroseconds(10000); 
+    digitalWrite(stepPin,LOW);
+    delayMicroseconds(10000);
+    reading = analogRead(A2);
+    Serial.println(reading);
+}
+
+
+}
