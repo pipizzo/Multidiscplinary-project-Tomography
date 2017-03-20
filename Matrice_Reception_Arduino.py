@@ -1,24 +1,21 @@
 import numpy as np
-import serial
+import serial                                   #interface avec arduino
 
-arduinoData = serial.Serial('com4',9600) #donnés du serial envoyé par l'arduino
+arduinoData = serial.Serial('com5',9600)        #donnés du serial envoyé par l'arduino
 
-myData = (arduinoData.readline().strip()) #donnés du serial haché
+myData = (arduinoData.readline().strip())       #donnés du serial haché
 
-projections = []
-c = 0
+projections = []                                #liste qui va contenir l'ensemble des projections pour les differents angles
+c = 0                                           #compteur de tour de la boucle
 
-while c < 179 :                               #nbre degrés balayé
-    projection = []
-    for i in range(64) :                    #nbre de mesure prise pour un angle
+while c < 1 :                                 #nbre degrés balayé
+    projection = []                             #liste qui va contenir une projection pour un angle donne
+    for i in range(450) :                        #nbre de mesure prise pour un angle
+        myData = (arduinoData.readline().strip())       #donnés du serial haché
         a = int(myData)
         projection.append(a)
-
-    #print(projection)
     projections.append(projection)
     c +=1
-    
-                                      #ATTENTION à regler le pas
 
 print(projections)
 
